@@ -1,0 +1,1476 @@
+/* ==========================================================================
+   MAIN STYLESHEET
+   - Built upon provided base styles
+   - Optimized for Home.html structure
+   ========================================================================== */
+
+/* === 1. CSS VARIABLES & CUSTOM PROPERTIES === */
+:root {
+  --accent-blue: #2563eb;
+  --accent-gold: #bfa06e;
+  --accent-teal: #2c7a7b;
+  --accent-red: #c94c4c;
+  --bg-light: #fdfaf6;
+  --text-dark: #1f2937;
+  --text-soft: #4b5563;
+  --header-bg: #fffdfa;
+  --pro-icon: '✔'; /* Used in reviews context */
+  --con-icon: '✖'; /* Used in reviews context */
+
+   /* Added/Adjusted based on previous main.css and home.html usage */
+   --border-light: #e5e7eb; /* Using a lighter gray */
+   --shadow-sm: 0 1px 3px rgba(0,0,0,0.08); /* Adjusted shadow values */
+   --shadow-md: 0 4px 12px rgba(0,0,0,0.08);
+   --shadow-lg: 0 8px 24px rgba(0,0,0,0.1);
+   --border-radius-sm: 8px; /* Consistent border-radius */
+   --border-radius-md: 10px;
+   --border-radius-lg: 1rem;
+
+   /* Typography - using Georgia from home.html head */
+   --font-body: 'Inter', sans-serif;
+   --font-headings: 'Georgia', serif;
+   --line-height-body: 1.7;
+   --line-height-heading: 1.3; /* Added for consistency */
+
+   /* Reviews Sidebar specific variables (Adjusted for subtlety) */
+   --reviews-sidebar-width-desktop: 300px; /* Sidebar width on larger screens */
+   --reviews-sidebar-bg: #f9f5f0; /* Subtle background */
+   --reviews-sidebar-shadow: var(--shadow-sm); /* Subtle shadow */
+   --reviews-sidebar-border-radius: var(--border-radius-md); /* Consistent border-radius */
+}
+
+*, *::before, *::after {
+ box-sizing: border-box;
+}
+
+body {
+ font-family: var(--font-body); /* Use variable */
+ line-height: var(--line-height-body); /* Use variable */
+ color: var(--text-dark);
+ background-color: var(--bg-light);
+ display: flex;
+ flex-direction: column;
+ min-height: 100vh;
+ margin: 0; /* Added margin reset */
+ padding: 0; /* Added padding reset */
+ scroll-behavior: smooth;
+}
+
+main {
+ flex-grow: 1;
+ animation: fadeIn 0.5s ease-in;
+}
+
+@keyframes fadeIn {
+ from { opacity: 0; transform: translateY(20px); }
+ to { opacity: 1; transform: translateY(0); }
+}
+
+img {
+ max-width: 100%;
+ height: auto;
+ display: block;
+ transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+h1, h2, h3, h4, h5, h6 {
+ margin-top: 1.25em;
+ margin-bottom: 0.6em;
+ color: var(--text-dark); /* Use text-dark variable */
+ font-weight: 600;
+ font-family: var(--font-headings); /* Use variable */
+ line-height: var(--line-height-heading); /* Use variable */
+}
+
+h1 { font-size: 2.25rem; }
+h2 { font-size: 1.75rem; }
+h3 { font-size: 1.5rem; }
+h4 { font-size: 1.25rem; }
+h5 { font-size: 1.125rem; }
+h6 { font-size: 1rem; }
+
+p {
+ margin-top: 0;
+ margin-bottom: 1.25rem;
+}
+
+a {
+ color: var(--accent-teal);
+ text-decoration: none;
+ transition: color 0.25s ease, transform 0.2s ease;
+}
+a:hover, a:focus { /* Added focus state */
+ color: var(--accent-red);
+ transform: translateY(-2px);
+}
+
+a:focus { /* Added focus outline for accessibility */
+ outline: 3px solid rgba(44, 122, 123, 0.4); /* Use a color based on accent-teal */
+ outline-offset: 2px;
+}
+
+/* === Layout Containers === */
+/* Consistent container for main content */
+.container {
+ max-width: 900px !important; /* Adjusted from 900px !important */
+ width: 100%;
+ margin-left: auto;
+ margin-right: auto;
+ padding-left: 1rem; /* Consistent padding */
+ padding-right: 1rem; /* Consistent padding */
+}
+
+/* Wider container for specific sections if needed */
+.content-container-wide { /* Used in home.html, gallery.html, extra.html */
+ max-width: 1100px;
+ margin: 0 auto;
+ width: 100%;
+}
+
+
+main section > p,
+main article > p {
+ max-width: 75ch;
+ margin-left: auto; /* Center the text block */
+ margin-right: auto; /* Center the text block */
+}
+.showcase-item p { /* Specific override for showcase items */
+ max-width: none;
+}
+
+/* Section Padding */
+.section-padding { /* Used in home.html, reviews.html, about.html, extra.html */
+ padding: 4rem 0;
+}
+
+.section-padding-sm { /* Used in home.html */
+ padding: 2rem 0;
+}
+
+/* Section backgrounds alternating colors */
+main section:nth-child(odd) {
+ background-color: var(--bg-light);
+}
+
+main section:nth-child(even) {
+ background-color: #f9f5f0; /* A slightly different light background */
+}
+
+
+/* === Header === */
+.site-header {
+ position: sticky;
+ top: 0;
+ z-index: 50; /* Increased z-index for sticky header */
+ background: linear-gradient(to right, #ffffff, #f9fafb, #ffffff);
+ box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+ border-bottom: 1px solid var(--border-light); /* Use variable */
+ margin-bottom: 0; /* Removed fixed margin-bottom */
+ transition: background-color 0.3s ease;
+}
+
+.site-header .container {
+ display: flex;
+ justify-content: space-between;
+ align-items: center;
+ padding: 1.25rem 1rem; /* Consistent padding */
+}
+
+/* === Logo === */
+.logo-link {
+ display: flex;
+ align-items: center;
+ justify-content: flex-start;
+ flex-shrink: 0;
+ padding-right: 1.5rem; /* Space between logo and nav */
+}
+.logo-link img {
+ height: 100px; /* Keeping 100px height from previous main.css */
+ width: auto;
+ transition: transform 0.3s ease;
+}
+.logo-link:hover img {
+ transform: scale(1.05);
+}
+
+/* === Navigation === */
+.main-nav ul {
+ /* Removed display flex and gap for spacing - handled by Tailwind flex space-x-6 */
+ list-style: none;
+ padding: 0;
+ margin: 0;
+}
+
+.main-nav a {
+ display: inline-block;
+ padding: 0.5rem 1rem;
+ font-weight: 500;
+ font-size: 1rem;
+ border-radius: 9999px; /* pill shape */
+ color: var(--text-dark);
+ border: 1px solid transparent;
+ background-color: transparent;
+ transition: all 0.3s ease;
+ box-shadow: 0 2px 4px rgba(0,0,0,0.04);
+}
+
+.main-nav a:hover,
+.main-nav a:focus {
+ background-color: #f1f5f9;
+ color: var(--accent-blue);
+ border-color: #d1d5db;
+ box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+ transform: translateY(-1px);
+}
+
+.main-nav a.active { /* Style for the active link */
+ background-color: var(--accent-blue);
+ color: white;
+ border-color: var(--accent-blue);
+ font-weight: 600;
+}
+
+
+/* Removed mobile menu toggle styles */
+.menu-toggle {
+ display: none;
+ background: none;
+ border: none;
+ padding: 0.5rem;
+ cursor: pointer;
+ color: var(--text-dark);
+ font-size: 1.5rem;
+}
+/*
+.main-nav {
+ margin-top: 0.5rem;
+ width: 100%;
+}
+
+.main-nav ul {
+ justify-content: center;
+ flex-direction: column;
+}
+
+.main-nav a {
+ width: 80%;
+ text-align: center;
+}
+
+.main-nav.active {
+ display: block;
+}
+*/
+
+
+/* === 6. BUTTONS & INTERACTIVE ELEMENTS === */
+/* Default button style used across pages (Home, Extra, etc.) */
+.button {
+ display: inline-block;
+ background-image: linear-gradient(135deg, var(--accent-teal), var(--accent-gold)); /* Original gradient */
+ color: white;
+ padding: 0.75rem 1.5rem;
+ border-radius: var(--border-radius-sm); /* Use variable */
+ font-weight: 600;
+ text-decoration: none;
+ border: none;
+ transition: all 0.3s ease;
+ box-shadow: var(--shadow-md); /* Use variable */
+ cursor: pointer; /* Added cursor */
+}
+
+.button:hover,
+.button:focus {
+ background-image: linear-gradient(135deg, var(--accent-red), var(--accent-gold)); /* Original hover gradient */
+ transform: scale(1.05) translateY(-2px);
+ box-shadow: 0 6px 14px rgba(0,0,0,0.2); /* Consistent hover shadow */
+}
+
+.button:active {
+ transform: scale(0.98);
+ box-shadow: inset 0 3px 6px rgba(0,0,0,0.2);
+}
+
+/* Button variants (from previous main.css if applicable) */
+.button-secondary { /* From previous main.css */
+ background-image: none;
+ background-color: transparent;
+ color: var(--accent-primary); /* Using accent-primary from previous variables, consider if this should change with new palette */
+ border: 2px solid var(--accent-primary);
+}
+
+.button-secondary:hover,
+.button-secondary:focus {
+ background-image: none;
+ background-color: var(--accent-primary);
+ color: white;
+}
+
+.button-small { /* From previous main.css */
+ padding: 0.5rem 1rem;
+ font-size: 0.875rem;
+}
+
+.button-large { /* From previous main.css */
+ padding: 1rem 2rem;
+ font-size: 1.125rem;
+}
+
+/* Specific style for the Explore button in home.html */
+.explore-btn { /* Used in home.html - styled as a button */
+ display: inline-block;
+ background-color: var(--accent-teal); /* Use accent-teal */
+ color: white;
+ padding: 0.75rem 1.5rem;
+ border-radius: 9999px; /* Pill shape */
+ font-weight: 600;
+ text-decoration: none;
+ transition: background-color 0.3s ease, transform 0.3s ease;
+ z-index: 4; /* Ensure button is clickable above overlay */
+ position: relative; /* Needed for z-index */
+ cursor: pointer; /* Added cursor */
+}
+
+.explore-btn:hover,
+.explore-btn:focus {
+ background-color: var(--accent-gold); /* Change color on hover/focus */
+ transform: translateY(-2px);
+}
+
+
+/* === Showcase === */
+/* Not explicitly used in Home.html, keeping from provided CSS */
+.showcase-grid {
+ display: grid;
+ grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+ gap: 2rem;
+ margin-top: 2rem;
+}
+
+.showcase-item {
+ transition: transform 0.3s ease, box-shadow 0.3s ease;
+ display: flex;
+ flex-direction: column;
+ background-color: white; /* Added background */
+ border-radius: var(--border-radius-md); /* Added border-radius */
+ box-shadow: var(--shadow-sm); /* Added shadow */
+ overflow: hidden; /* Ensure image border-radius is clipped */
+}
+.showcase-item:hover {
+ transform: translateY(-5px);
+ box-shadow: var(--shadow-lg); /* Adjusted shadow */
+}
+.showcase-item img {
+ border-radius: var(--border-radius-md); /* Use variable */
+ margin-bottom: 1rem; /* Space between image and text */
+}
+
+.showcase-content { /* Added from previous main.css */
+ padding: 1.5rem;
+ flex-grow: 1; /* Allow content to grow */
+}
+
+.showcase-title { /* Added from previous main.css */
+ margin-top: 0;
+ font-size: 1.25rem;
+ color: var(--text-dark); /* Use variable */
+}
+
+.showcase-item p { /* Added from previous main.css */
+ font-size: 1rem;
+ color: var(--text-soft); /* Use variable */
+ margin-bottom: 0; /* Remove bottom margin */
+}
+
+
+/* === 8. GALLERY STYLES === */
+/* Used in: gallery.html, home.html (image-stream) */
+.gallery-grid { /* Used in gallery.html */
+ display: grid;
+ grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+ gap: 1rem;
+ margin-top: 1.5rem;
+}
+
+.gallery-item img { /* Used in gallery.html */
+ object-fit: cover;
+ aspect-ratio: 1 / 1;
+ width: 100%;
+ transition: transform 0.3s ease, box-shadow 0.3s ease;
+ border-radius: var(--border-radius-sm); /* Use variable */
+}
+.gallery-item img:hover {
+ transform: scale(1.05);
+ box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
+}
+
+/* Image Stream and Scroll Gallery */
+.image-stream { /* Used in home.html */
+ margin-top: 2rem;
+ padding-bottom: 4rem; /* Added padding below the stream */
+}
+
+.scroll-gallery { /* Used in home.html */
+ display: flex;
+ overflow-x: auto;
+ scroll-snap-type: x mandatory;
+ gap: 1rem;
+ padding: 1rem 0;
+ scrollbar-width: none; /* Firefox */
+ -ms-overflow-style: none; /* IE/Edge */
+}
+
+.scroll-gallery::-webkit-scrollbar { /* Used in home.html */
+ display: none; /* Chrome/Safari/Opera */
+}
+
+.scroll-gallery img { /* Used in home.html */
+ flex: 0 0 auto;
+ width: 250px;
+ height: 250px;
+ object-fit: cover;
+ border-radius: var(--border-radius-sm); /* Use variable */
+ scroll-snap-align: start;
+ transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.scroll-gallery img:hover { /* Used in home.html */
+ transform: scale(1.03); /* Slightly less pronounced scale */
+ box-shadow: var(--shadow-md); /* Use variable */
+}
+
+
+/* === 9. REVIEW STYLES === */
+/* Styles specific to reviews.html */
+
+/* Layout for Reviews Page with Sidebar */
+.reviews-layout { /* New class for the reviews page layout */
+   display: flex;
+   gap: 2rem; /* Space between main content and sidebar */
+   margin-top: 2rem; /* Space below header */
+   margin-bottom: 3rem; /* Space above footer */
+}
+
+.main-reviews-content { /* Wrapper for the review articles */
+   flex-grow: 1; /* Allow main content to take available space */
+   flex-basis: 0; /* Allow shrinking below flex-grow */
+   min-width: 0; /* Prevent content from overflowing */
+   /* Max width for the main content reviews block if needed */
+   /* max-width: 800px; */
+}
+
+.reviews-sidebar { /* The new sidebar */
+   width: var(--reviews-sidebar-width-desktop); /* Fixed or percentage width for sidebar */
+   flex-shrink: 0; /* Prevent sidebar from shrinking */
+   background-color: var(--reviews-sidebar-bg); /* Subtle background */
+   border-radius: var(--reviews-sidebar-border-radius); /* Consistent border-radius */
+   box-shadow: var(--reviews-sidebar-shadow); /* Subtle shadow */
+   padding: 1.5rem;
+}
+
+.micro-reviews-section,
+.external-reviews-section {
+   margin-bottom: 2rem; /* Space between sections in sidebar */
+}
+
+.reviews-sidebar h3 {
+   margin-top: 0;
+   margin-bottom: 1rem;
+   color: var(--accent-blue); /* Heading color for sidebar sections */
+   font-size: 1.2rem;
+}
+
+.reviews-sidebar ul {
+   list-style: none;
+   padding: 0;
+   margin: 0;
+}
+
+.reviews-sidebar li {
+   margin-bottom: 0.75rem;
+   font-size: 0.95rem;
+   color: var(--text-dark);
+   line-height: 1.4; /* Tighter line height for list items */
+}
+
+.reviews-sidebar a {
+   color: var(--accent-teal); /* Link color in sidebar */
+}
+
+.reviews-sidebar a:hover,
+.reviews-sidebar a:focus {
+   color: var(--accent-gold); /* Link hover color */
+   text-decoration: underline;
+}
+
+
+.review-article {
+ background-color: #ffffff;
+ border-radius: var(--border-radius-lg);
+ padding: 2.5rem;
+ margin-bottom: 3rem;
+ box-shadow: 0 8px 24px rgba(0, 0, 0, 0.05);
+ transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.review-article:hover {
+ transform: translateY(-4px);
+ box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+}
+
+.review-article h2 {
+ font-size: 1.75rem;
+ color: var(--text-dark);
+ font-weight: 700;
+ margin-bottom: 0.75rem;
+}
+
+.review-meta {
+ font-size: 0.9rem;
+ color: var(--text-soft);
+ margin-bottom: 1rem;
+}
+.review-meta span::after {
+ content: '|';
+ margin: 0 0.75rem;
+ color: #d1d5db;
+}
+.review-meta span:last-child::after {
+ content: '';
+}
+
+.review-illustration {
+ float: right;
+ margin-left: 1.5rem;
+ margin-bottom: 1.5rem;
+ max-width: 280px;
+ border-radius: var(--border-radius-md); /* Use variable */
+ box-shadow: var(--shadow-md); /* Use variable */
+}
+
+.tagline { /* Used in home.html, reviews.html */
+ font-size: 1.4rem; /* Larger tagline */
+ font-weight: 500;
+ font-style: italic;
+ margin-bottom: 1.5rem;
+ color: var(--accent-teal);
+}
+
+.rating {
+ font-size: 1.25rem;
+ color: #f59e0b; /* Keeping the amber color for rating */
+ margin-bottom: 0.5rem;
+}
+
+.price {
+ font-size: 1rem;
+ color: #374151;
+ font-weight: 600;
+ margin-bottom: 1rem;
+}
+
+.preview {
+ font-size: 1rem;
+ line-height: 1.7;
+ margin-bottom: 1.25rem;
+ color: #374151;
+}
+
+.full-review {
+ margin-top: 1.25rem;
+ font-size: 1rem;
+ line-height: 1.75;
+ color: #374151;
+}
+
+.full-review p {
+ margin-bottom: 1.25rem;
+}
+
+/* Buttons within reviews */
+/* Change button colors ONLY for buttons within review articles */
+.review-article .button {
+ background-image: linear-gradient(135deg, var(--accent-blue), #4f87f7); /* Updated button color for reviews */
+}
+
+.review-article .button:hover,
+.review-article .button:focus {
+ background-image: linear-gradient(135deg, var(--accent-red), var(--accent-gold)); /* Keep original hover color */
+}
+
+
+.read-more-btn { /* Used in reviews.html */
+ margin-right: 1rem;
+ margin-top: 1rem;
+}
+
+a.button { /* Specific style for anchor tags styled as buttons */
+ margin-top: 1rem;
+}
+
+/* Pros & Cons Tables */
+.pros-cons { /* Used in reviews.html */
+ margin-top: 2rem;
+}
+
+.pros-cons table { /* Used in reviews.html */
+ width: 100%;
+ border-collapse: separate; /* Changed to separate for rounded corners with overflow hidden */
+ border-spacing: 0;
+ margin-top: 1.5rem;
+ border-radius: 0.75rem;
+ overflow: hidden;
+ font-size: 0.95rem;
+ box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+
+.pros-cons th { /* Used in reviews.html */
+ background-color: #f9fafb;
+ padding: 1rem;
+ text-align: left;
+ font-size: 0.85rem;
+ text-transform: uppercase;
+ color: #6b7280;
+ font-weight: 700;
+ border-bottom: 1px solid #e5e7eb;
+}
+
+.pros-cons td { /* Used in reviews.html */
+ padding: 1rem;
+ border-bottom: 1px solid #e5e7eb;
+ vertical-align: top;
+ font-size: 0.95rem;
+}
+
+td.pro::before { /* Used in reviews.html */
+ content: var(--pro-icon);
+ color: var(--accent-teal);
+ margin-right: 0.5rem;
+}
+td.pro { /* Used in reviews.html */
+ color: var(--accent-teal);
+ font-weight: 500;
+}
+
+td.con::before { /* Used in reviews.html */
+ content: var(--con-icon);
+ color: var(--accent-red);
+ margin-right: 0.5rem;
+}
+td.con { /* Used in reviews.html */
+ color: var(--accent-red);
+ font-weight: 500;
+}
+
+.pros-cons tr:last-child td { /* Ensure last row has no bottom border */
+ border-bottom: none;
+}
+
+
+/* === 10. ABOUT PAGE STYLES === */
+/* Used in: about.html */
+.about-section { /* Used in about.html */
+ padding: 3rem 0;
+ background-color: white;
+ border-radius: var(--border-radius-lg);
+ box-shadow: var(--shadow-lg);
+ margin-bottom: 3rem;
+}
+
+.about-content { /* Used in about.html */
+ max-width: 800px;
+ margin: 0 auto;
+ padding: 0 1rem;
+}
+
+.team-grid { /* Used in about.html */
+ display: grid;
+ grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+ gap: 2rem;
+ margin-top: 2rem;
+ text-align: center;
+}
+
+.team-member img { /* Used in about.html */
+ width: 150px;
+ height: 150px;
+ object-fit: cover;
+ border-radius: 50%;
+ border: 4px solid var(--accent-secondary);
+ margin-bottom: 1rem;
+}
+
+.team-member h3 { /* Used in about.html */
+ margin-top: 0;
+ margin-bottom: 0.5rem;
+ font-size: 1.3rem;
+ color: var(--text-dark);
+}
+
+.team-member p { /* Used in about.html */
+ font-size: 0.95rem;
+ color: var(--text-soft);
+}
+
+.timeline { /* Used in about.html */
+   position: relative;
+   padding: 2rem 0;
+   list-style: none;
+}
+
+.timeline::before { /* Used in about.html */
+   content: '';
+   position: absolute;
+   left: 50%;
+   top: 0;
+   bottom: 0;
+   width: 2px;
+   background: var(--border-light);
+   transform: translateX(-50%);
+}
+
+.timeline-item { /* Used in about.html */
+   margin-bottom: 2rem;
+   position: relative;
+   width: 50%;
+   padding-right: 2rem;
+}
+
+.timeline-item:nth-child(odd) { /* Used in about.html */
+   left: 0;
+}
+
+.timeline-item:nth-child(even) { /* Used in about.html */
+   left: 50%;
+   padding-left: 2rem;
+   padding-right: 0;
+   text-align: left;
+}
+
+.timeline-item::after { /* Used in about.html */
+   content: '';
+   position: absolute;
+   top: 0.75rem;
+   right: -0.5rem;
+   width: 1rem;
+   height: 1rem;
+   background: var(--accent-primary);
+   border-radius: 50%;
+   border: 3px solid var(--bg-light);
+   z-index: 1;
+}
+
+.timeline-item:nth-child(even)::after { /* Used in about.html */
+   left: -0.5rem;
+}
+
+.timeline-date { /* Used in about.html */
+   font-weight: 700;
+   color: var(--accent-secondary);
+   margin-bottom: 0.5rem;
+   display: block;
+}
+
+/* Specific style for the author portrait image */
+.author-portrait {
+   object-fit: cover; /* Ensure the image covers the circular area */
+   object-position: center; /* Center the image within the circular area */
+}
+
+
+/* === 11. MAP PAGE STYLES === */
+/* Used in: map.html */
+/* Note: Some inline styles in map.html might override these */
+.map-container { /* Used in map.html */
+ position: relative;
+ margin: 0 auto;
+ max-width: 900px;
+}
+.map-pin { /* Used in map.html */
+ position: absolute;
+ width: 24px;
+ height: 24px;
+ border-radius: 50%;
+ background-color: var(--accent-red); /* Use variable */
+ border: 3px solid #fff;
+ box-shadow: 0 2px 5px rgba(0,0,0,0.3);
+ transform: translate(-50%, -50%);
+ cursor: pointer;
+ transition: all 0.3s ease;
+ z-index: 10; /* Ensure pins are above the map image */
+}
+
+.map-pin.active { /* Used in map.html */
+ background-color: var(--accent-teal); /* Highlight color, using accent-teal */
+ transform: translate(-50%, -50%) scale(1.2);
+}
+
+.map-pin:hover { /* Used in map.html */
+  transform: translate(-50%, -50%) scale(1.1);
+}
+
+/* Specific pin positions (example - add all necessary pin positions) */
+/* These should ideally be defined in the HTML or via JS */
+.pin-switzerland { top: 40%; left: 50%; } /* Example position */
+.pin-japan { top: 60%; left: 80%; } /* Example position */
+.pin-germany { top: 45%; left: 55%; } /* Example position */
+
+
+.history-section { /* Used in map.html */
+ margin-top: 2rem;
+ padding: 1.5rem;
+ background-color: white;
+ border-radius: var(--border-radius-md);
+ box-shadow: var(--shadow-sm);
+ display: none; /* Initially hidden */
+ animation: fadeIn 0.5s ease-in;
+}
+
+.history-section.active { /* Used in map.html */
+ display: block;
+}
+
+.scroll-to-map { /* Used in map.html */
+ position: fixed;
+ bottom: 2rem;
+ right: 2rem;
+ background-color: var(--accent-blue); /* Use variable */
+ color: white;
+ width: 40px;
+ height: 40px;
+ border-radius: 50%;
+ display: flex;
+ justify-content: center;
+ align-items: center;
+ font-size: 1.5rem;
+ cursor: pointer;
+ box-shadow: var(--shadow-md);
+ transition: opacity 0.3s ease, visibility 0.3s ease;
+ opacity: 0;
+ visibility: hidden;
+ z-index: 40;
+}
+
+.scroll-to-map.visible { /* Used in map.html */
+ opacity: 1;
+ visibility: visible;
+}
+
+/* === 12. ESSAY PAGE STYLES === */
+/* Used in: essay.html */
+/* Basic styling for the visual essay content block */
+.visual-essay-container { /* Used in essay.html (inline style) */
+ max-width: 800px; /* This controls the wrapping width in the middle */
+ margin-left: auto;
+ margin-right: auto;
+ background-color: #ffffff; /* Match your home.html content block styling */
+ padding: 1.5rem; /* Add padding */
+ border-radius: 0.5rem; /* Rounded corners */
+ box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05); /* Subtle shadow */
+ margin-top: 2rem; /* Space below header */
+ margin-bottom: 2rem; /* Space before footer */
+ line-height: 1.7; /* Ensure good readability */
+}
+
+.visual-essay-container img { /* Used in essay.html */
+   display: block;
+   margin: 1.5rem auto; /* Center images and add vertical space */
+   max-width: 100%; /* Ensure images don't overflow container */
+   height: auto;
+   border-radius: var(--border-radius-sm);
+   box-shadow: var(--shadow-sm);
+   transition: transform var(--transition-default);
+}
+
+.visual-essay-container img:hover { /* Used in essay.html */
+   transform: scale(1.02);
+}
+
+.visual-essay-container figcaption { /* Used in essay.html */
+   text-align: center;
+   font-style: italic;
+   color: var(--text-soft);
+   margin-top: 0.5rem;
+   margin-bottom: 1.5rem;
+}
+
+/* Specific image styles for the essay (example) */
+.essay-image-wide { /* Not explicitly used in provided HTML, but could be a pattern */
+   max-width: 900px; /* Wider than the text container */
+   margin-left: auto;
+   margin-right: auto;
+}
+
+.essay-image-small { /* Not explicitly used in provided HTML, but could be a pattern */
+   max-width: 400px; /* Smaller image */
+}
+
+/* === 13. EXTRA PAGE STYLES === */
+/* Used in: extra.html */
+.watch-care-section,
+.maintenance-basics { /* Used in extra.html */
+   padding: 3rem 0;
+}
+
+.care-guide-item { /* Used in extra.html */
+   background-color: white;
+   border-radius: var(--border-radius-md);
+   padding: 1.5rem;
+   margin-bottom: 2rem;
+   box-shadow: var(--shadow-sm);
+}
+
+.care-guide-item h3 { /* Used in extra.html */
+   margin-top: 0;
+   color: var(--accent-secondary);
+}
+
+.care-guide-item img { /* Used in extra.html */
+   max-width: 300px;
+   float: left;
+   margin-right: 1.5rem;
+   margin-bottom: 1rem;
+   border-radius: var(--border-radius-sm);
+}
+
+.maintenance-basics h2 { /* Used in extra.html */
+   text-align: center;
+   margin-bottom: 2rem;
+}
+
+.maintenance-list { /* Used in extra.html */
+   list-style: disc;
+   padding-left: 1.5rem;
+}
+
+.maintenance-list li { /* Used in extra.html */
+   margin-bottom: 1rem;
+   line-height: var(--line-height-body);
+}
+
+.credits-section { /* Used in extra.html */
+   padding: 2rem 0;
+   background-color: #f9f5f0; /* Light warm background */
+   margin-top: 3rem; /* Space above credits */
+}
+
+.credits-section h2 { /* Used in extra.html */
+   text-align: center;
+   margin-bottom: 1.5rem;
+}
+
+.credits-section ul { /* Used in extra.html */
+   list-style: disc;
+   padding-left: 1.5rem;
+   max-width: 800px; /* Limit width for readability */
+   margin: 0 auto; /* Center the list */
+}
+
+.credits-section li {
+   margin-bottom: 0.75rem;
+   line-height: 1.6;
+}
+
+.credits-section a {
+   color: var(--accent-blue); /* Use accent-blue for links */
+   text-decoration: underline;
+}
+
+.credits-section a:hover {
+   color: var(--accent-gold); /* Use accent-gold for hover */
+}
+
+
+/* === 14. FOOTER === */
+/* Used in: home.html, reviews.html, gallery.html, about.html, map.html, extra.html */
+.site-footer {
+ background-color: #1f2937; /* Dark background */
+ color: #d1d5db; /* Light text */
+ text-align: center;
+ padding: 2.5rem 1rem;
+ font-size: 0.9rem;
+ margin-top: 3rem; /* Default margin-top */
+}
+
+.site-footer p {
+ margin-bottom: 1rem;
+}
+
+.footer-nav ul { /* From previous main.css, if used in footer */
+ display: flex;
+ flex-wrap: wrap;
+ gap: 1.5rem;
+ justify-content: center;
+ list-style: none;
+ padding: 0;
+ margin: 0;
+}
+
+.footer-social ul { /* From previous main.css, if used in footer */
+ display: flex;
+ gap: 1rem;
+ justify-content: center;
+ list-style: none;
+ padding: 0;
+ margin: 0;
+}
+
+/* Styles used in footers with Tailwind in HTML */
+.social-links, .legal-links { /* Used in reviews.html, about.html, extra.html */
+ display: flex; /* Added display flex */
+ justify-content: center; /* Center links */
+ gap: 1rem; /* Added gap for spacing */
+ flex-wrap: wrap; /* Allow wrapping on smaller screens */
+ margin-top: 1rem;
+}
+
+.social-links a, .legal-links a {
+ color: #9ca3af; /* Default link color */
+ text-decoration: none;
+ transition: color 0.3s ease;
+}
+.social-links a:hover, .legal-links a:hover,
+.social-links a:focus, .legal-links a:focus { /* Added focus */
+ color: #ffffff; /* White on hover/focus */
+}
+
+.legal-links {
+ font-size: 0.85rem;
+ margin-top: 0.5rem; /* Adjusted margin-top */
+}
+
+.footer-copyright { /* Used in home.html, reviews.html, about.html, extra.html, map.html */
+ margin-top: 2rem;
+ font-size: 0.875rem;
+ opacity: 0.8;
+}
+
+
+/* === 15. ANIMATIONS === */
+/* Used in: main, history-section */
+@keyframes fadeIn {
+ from { opacity: 0; transform: translateY(20px); }
+ to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes slideIn { /* Not explicitly used in provided HTML with animate-slideIn, but exists in CSS */
+ from { opacity: 0; transform: translateX(-20px); }
+ to   { opacity: 1; transform: translateX(0); }
+}
+
+.animate-fadeIn { /* Used in home.html (lead-section) */
+ animation: fadeIn var(--transition-slow) both;
+}
+
+.animate-slideIn { /* Not explicitly used in provided HTML, but exists in CSS */
+ animation: slideIn var(--transition-slow) both;
+}
+
+
+/* === 16. UTILITY CLASSES === */
+/* Used across various HTML files */
+.text-center { text-align: center; }
+.text-left { text-align: left; }
+.text-right { text-align: right; }
+
+/* Margin Top Utilities */
+.mt-0 { margin-top: 0; } /* Not explicitly used in provided HTML */
+.mt-1 { margin-top: 0.5rem; } /* Not explicitly used in provided HTML */
+.mt-2 { margin-top: 1rem; } /* Not explicitly used in provided HTML */
+.mt-3 { margin-top: 1.5rem; }
+.mt-4 { margin-top: 2rem; }
+.mt-5 { margin-top: 3rem; }
+
+/* Margin Bottom Utilities */
+.mb-0 { margin-bottom: 0; } /* Not explicitly used in provided HTML */
+.mb-1 { margin-bottom: 0.5rem; /* Not explicitly used in provided HTML */ }
+.mb-2 { margin-bottom: 1rem; }
+.mb-3 { margin-bottom: 1.5rem; }
+.mb-4 { margin-bottom: 2rem; }
+.mb-5 { margin-bottom: 3rem; }
+
+.visually-hidden { /* Used in home.html */
+ position: absolute;
+ width: 1px;
+ height: 1px;
+ padding: 0;
+ margin: -1px;
+ overflow: hidden;
+ clip: rect(0, 0, 0, 0);
+ white-space: nowrap;
+ border-width: 0;
+}
+
+
+/* === 18. RESPONSIVE DESIGN === */
+/* Adjustments based on screen size */
+@media (max-width: 768px) {
+   .main-nav {
+     display: block !important;    /* override the “display: none” hiding rule */ 
+     overflow-x: auto;             /* allow horizontal scroll if very tight */
+     text-align: center;           /* center‐align the wrapped lines */
+   }
+   .main-nav ul {
+     display: flex;
+     flex-wrap: wrap;              /* let items wrap onto new lines */
+     justify-content: center;      /* center each row of links */
+     gap: 0.5rem;                  /* small gap between items */
+     padding: 0; margin: 0;
+     list-style: none;
+   }
+   .main-nav li {
+     flex: 0 0 auto;               /* prevent items from stretching */
+   }
+   .nav-link {
+     display: inline-block;
+     white-space: nowrap;          /* keep each link text on one line */
+     margin: 0.25rem 0;            /* vertical spacing when wrapped */
+   }
+ }
+/* Small devices (phones, 576px and up) */
+@media (max-width: 576px) {
+ html {
+   font-size: 15px; /* Slightly increased base font size for better readability */
+ }
+
+ .container {
+   padding-left: 1rem;
+   padding-right: 1rem;
+ }
+
+ h1 { font-size: 1.75rem; }
+ h2 { font-size: 1.5rem; }
+
+ .section-padding {
+   padding: 2rem 0;
+ }
+
+ .review-article { /* Used in reviews.html */
+   padding: 1.5rem;
+ }
+}
+
+/* Medium devices (tablets, 768px and up) */
+@media (max-width: 768px) {
+ .site-header .container { /* Used in home.html, reviews.html, gallery.html, about.html, extra.html */
+   flex-direction: column;
+   align-items: center;
+   padding: 1rem; /* Adjusted padding for mobile header */
+ }
+
+ .logo-link {
+     padding-right: 0; /* Remove padding on mobile */
+     margin-bottom: 0.5rem; /* Add space below logo */
+ }
+
+ .main-nav {
+   margin-top: 0.5rem; /* Adjusted margin-top */
+   width: 100%;
+ }
+
+ .main-nav ul {
+   /* Tailwind flex and space-x will handle layout */
+   justify-content: center; /* Center stacked items */
+   flex-direction: column; /* Stack navigation items vertically */
+ }
+
+ .main-nav a {
+     width: 80%; /* Make links take up more width */
+     text-align: center; /* Center text in links */
+ }
+
+ /* Removed mobile menu toggle styles */
+ /*
+ .menu-toggle {
+   display: block;
+   position: absolute;
+   top: 1rem;
+   right: 1rem;
+   z-index: 60;
+ }
+
+ .main-nav {
+   display: none;
+ }
+
+ .main-nav.active {
+   display: block;
+ }
+ */
+
+ .review-illustration { /* Used in reviews.html */
+   float: none;
+   margin: 1.5rem auto;
+   max-width: 90%;
+ }
+
+ .pros-cons table { /* Used in reviews.html */
+   font-size: 0.9rem;
+ }
+
+ .showcase-grid, /* Not explicitly used in provided HTML */
+ .gallery-grid { /* Used in gallery.html */
+   grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+ }
+
+ .timeline::before { /* Used in about.html */
+     left: 1rem;
+     transform: translateX(0);
+ }
+
+ .timeline-item { /* Used in about.html */
+     width: 100%;
+     padding-left: 2.5rem;
+     padding-right: 0;
+ }
+
+ .timeline-item:nth-child(even) { /* Used in about.html */
+     left: 0;
+     padding-left: 2.5rem;
+ }
+
+ .timeline-item::after { /* Used in about.html */
+     left: 0.5rem;
+     right: auto;
+     transform: translateX(0);
+ }
+
+ .timeline-item:nth-child(even)::after { /* Used in about.html */
+     left: 0.5rem;
+ }
+
+ .care-guide-item img { /* Used in extra.html */
+     float: none;
+     margin: 1rem auto;
+   }
+
+   /* Map specific mobile styles */
+   .timeline-svg { /* From map.html (inline style) */
+   width: 100%;
+   height: auto;
+   min-width: 1200px; /* This might need review based on actual SVG */
+   }
+
+   .timeline-svg .year { /* From map.html (inline style) */
+   font-family: var(--font-body); /* Use variable */
+   font-size: 14px;
+   fill: var(--text-dark); /* Use variable */
+   text-anchor: middle;
+   font-weight: 600;
+   }
+
+   .milestone-desc { /* From map.html (inline style) */
+   font-size: 0.875rem;
+   color: var(--text-soft); /* Use variable */
+   font-family: var(--font-body); /* Use variable */
+   text-align: center;
+   padding: 0.5rem;
+   }
+
+   .timeline-milestone:hover circle { /* From map.html (inline style) */
+   fill: var(--accent-red); /* Use variable */
+   transition: fill 0.3s ease;
+   }
+
+   /* Reviews page layout for mobile */
+   .reviews-layout {
+       flex-direction: column; /* Stack main content and sidebar */
+       gap: 2rem; /* Space between stacked sections */
+   }
+
+   .reviews-sidebar {
+       width: 100%; /* Sidebar takes full width */
+       order: -1; /* Optionally place sidebar above main content on mobile */
+   }
+}
+
+/* Medium devices (tablets, 768px and up) - added from previous main.css */
+@media (min-width: 768px) {
+ .main-nav ul {
+   flex-direction: row; /* Ensure row layout on tablets and up */
+   /* Removed gap: 1rem; - spacing handled by Tailwind space-x-6 */
+ }
+
+  /* Removed mobile menu toggle display override */
+  /*
+  .main-nav {
+   display: block !important;
+  }
+  */
+
+ .site-header .container {
+   flex-direction: row; /* Ensure row layout for header content */
+ }
+
+ .review-illustration {
+   float: right; /* Restore float on larger screens */
+   margin: 0 0 1.5rem 1.5rem; /* Restore margin */
+ }
+
+ .care-guide-item img {
+   float: left; /* Restore float on larger screens */
+   margin-right: 1.5rem;
+   margin-bottom: 1rem;
+ }
+}
+
+
+/* Large devices (desktops, 992px and up) - added from previous main.css */
+@media (min-width: 992px) {
+ .container {
+   padding-left: 2rem;
+   padding-right: 2rem;
+ }
+
+ .featured-tiles { /* Corrected selector */
+     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* Adjust grid for larger screens */
+ }
+
+ /* Reviews page layout for larger screens */
+  .reviews-layout {
+      flex-direction: row; /* Side-by-side layout */
+  }
+
+  .main-reviews-content {
+      /* Ensure main content takes appropriate space */
+  }
+
+  .reviews-sidebar {
+      width: var(--reviews-sidebar-width-desktop); /* Sidebar width on larger screens */
+      order: 0; /* Default order */
+  }
+}
+
+/* Extra large devices (large desktops, 1200px and up) - added from previous main.css */
+@media (min-width: 1200px) {
+ html {
+   font-size: 18px; /* Increased base font size for large screens */
+ }
+
+ .container {
+   padding-left: 3rem;
+   padding-right: 3rem;
+ }
+}
+
+/* === 19. PRINT STYLES === */
+@media print {
+ body {
+   background-color: white;
+   color: black;
+ }
+
+ .site-header,
+ .site-footer,
+ .main-nav,
+ .button,
+ .explore-btn { /* Added explore-btn */
+   display: none;
+ }
+
+ main {
+   width: 100%;
+   margin: 0;
+   padding: 0;
+ }
+
+ h1, h2, h3, h4, h5, h6 {
+   page-break-after: avoid;
+   page-break-inside: avoid;
+ }
+
+ img {
+   max-width: 100% !important;
+   page-break-inside: avoid;
+ }
+
+ p, h2, h3 {
+   orphans: 3;
+   widows: 3;
+ }
+
+ .review-article {
+   box-shadow: none;
+   border: 1px solid #ddd;
+   break-inside: avoid;
+   padding: 1rem; /* Adjust padding for print */
+   margin-bottom: 1rem; /* Adjust margin for print */
+ }
+
+ /* Hide elements specific to interactive map in print */
+ .map-container, /* From previous main.css */
+ .map-pin, /* From previous main.css */
+ .scroll-to-map { /* From previous main.css */
+     display: none !important;
+ }
+
+ .history-section { /* From previous main.css */
+     display: block !important; /* Ensure history sections are visible in print */
+     box-shadow: none;
+     border: 1px solid #ddd;
+     margin-bottom: 1rem;
+   }
+
+  .featured-tiles { /* Hide the featured tiles section in print */
+      display: none;
+  }
+
+  .image-stream { /* Hide image stream in print */
+      display: none;
+  }
+
+  .expertise-highlights { /* Hide expertise highlights in print */
+      display: none;
+  }
+
+   /* Hide sidebar in print */
+   .reviews-sidebar {
+       display: none !important;
+   }
+
+   /* Ensure main content uses full width in print */
+   .main-reviews-content {
+       width: 100% !important;
+       flex-basis: auto !important;
+   }
+
+   /* Ensure tables print correctly */
+   table {
+       page-break-inside: avoid;
+   }
+   th, td {
+       page-break-inside: avoid;
+   }
+}
+
+
+/* === 20. ACCESSIBILITY ENHANCEMENTS === */
+@media (prefers-reduced-motion: reduce) {
+ * {
+   animation-duration: 0.01ms !important;
+   animation-iteration-count: 1 !important;
+   transition-duration: 0.01ms !important;
+   scroll-behavior: auto !important;
+ }
+}
+
+.skip-link { /* From previous main.css */
+ position: absolute;
+ top: -100px;
+ left: 0;
+ background: var(--accent-blue); /* Using accent-blue */
+ color: white;
+ padding: 10px;
+ z-index: 100;
+}
+
+.skip-link:focus {
+ top: 0;
+}
+
+/* High contrast mode adjustments */
+@media (forced-colors: active) {
+ .button, .explore-btn { /* Added explore-btn */
+   border: 2px solid currentColor;
+ }
+}

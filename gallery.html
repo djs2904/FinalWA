@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Gallery – Watches: Style & Intricacies</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap" rel="stylesheet" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="main2.css" />
+    <style>
+      /* Ensure gallery items have space for text - combined from gallery.html and gallery2.html */
+      .gallery-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr); /* Changed to 3 columns */
+        gap: 1rem;
+      }
+
+      .gallery-item {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        background-color: #f9fafb; /* Gray-50 for item background */
+        padding: 1rem;
+        border-radius: 8px;
+        box-shadow: 0 1px 3px rgba(0,0,0,0.08);
+        height: 100%; /* Ensure items in the grid have equal height */
+      }
+
+      .gallery-item img {
+        width: 100%; /* Make image take full width of item */
+        height: auto;
+        object-fit: cover; /* Cover the area, might crop */
+        aspect-ratio: 1 / 1; /* Maintain aspect ratio */
+        margin-bottom: 1rem; /* Space between image and text */
+        border-radius: 4px;
+      }
+
+      .image-description {
+        font-size: 0.95rem;
+        color: #374151; /* Gray-700 */
+        text-align: left; /* Align text left within the item */
+        width: 100%; /* Take full width of item */
+        margin-top: auto; /* Push description to the bottom */
+      }
+
+     .image-description h4 {
+        font-size: 1rem;
+        font-weight: 600;
+        color: #1f2937; /* Gray-800 */
+        margin-bottom: 0.5rem;
+     }
+
+      /* Placeholder styling - match gallery.html but maintain visibility */
+      .gallery-item.placeholder {
+        background-color: #f3f4f6;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        color: #9ca3af;
+        font-style: italic;
+        min-height: 200px; /* Ensure placeholders are visible */
+      }
+
+      /* Section styling - match gallery.html */
+      .gallery-section, .data-section {
+        background-color: white;
+        padding: 1.5rem;
+        border-radius: 0.5rem;
+        box-shadow: 0 1px 3px rgba(0,0,0,0.12);
+        margin-bottom: 2.5rem;
+        max-width: 1200px; /* Wider container */
+        margin-left: auto;
+        margin-right: auto;
+      }
+
+      /* Headings - match gallery.html */
+      .gallery-section h2 {
+        font-size: 1.5rem;
+        font-weight: 700;
+        margin-bottom: 1rem;
+        color: #1f2937;
+      }
+
+      .data-section h3 {
+        font-size: 1.25rem;
+        font-weight: 600;
+        margin-bottom: 0.75rem;
+        color: #1f2937;
+      }
+
+      /* Paragraphs - match gallery.html */
+      .gallery-section p, .data-section p {
+        margin-bottom: 1.5rem;
+        color: #4b5563;
+        line-height: 1.6;
+      }
+
+      /* Lists - match gallery.html */
+      .data-section ul {
+        list-style-type: disc;
+        margin-left: 1.5rem;
+        color: #374151;
+        line-height: 1.5;
+        margin-bottom: 1rem;
+      }
+
+    </style>
+  </head>
+  <body class="bg-gray-50 text-gray-800 font-inter">
+    <header class="site-header bg-white shadow sticky top-0 z-10">
+      <div class="container mx-auto flex justify-between items-center px-4 py-3">
+        <a href="home.html" class="logo-link"><img src="imgs/time_refined.svg" alt="Time Refined Logo"></a>
+        <nav class="main-nav">
+          <ul class="flex space-x-6">
+            <li><a href="home.html" class="nav-link">Home</a></li>
+            <li><a href="reviews.html" class="nav-link">Reviews</a></li>
+            <li><a href="gallery.html" class="nav-link active">Gallery</a></li>
+            <li><a href="about.html" class="nav-link">About</a></li>
+            <li><a href="extra.html" class="nav-link">Maintenance</a></li>
+            <li><a href="map.html" class="nav-link">Map</a></li>
+            <li><a href="essay.html" class="nav-link">Essay</a></li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+
+    <main class="container mx-auto mt-8 px-4">
+      <section class="bg-white p-6 rounded-lg shadow mb-10">
+        <h1 class="text-3xl font-bold text-gray-900 mb-4">Watches: A Dual Lens of Style and Substance</h1>
+        <p class="text-center text-gray-700">
+          Welcome to a visual exploration centered on the world of watches. This gallery is designed to showcase the multifaceted nature of timepieces, not just as instruments but as pivotal elements of personal expression and marvels of engineering. You'll discover two interconnected collections: the first, 'Horology in Harmony: Styling the Timepiece,' illustrates how a carefully chosen watch becomes the anchor of an outfit, influencing and elevating personal style across diverse settings—from casual daily wear to formal occasions. Each look is thoughtfully curated to highlight the watch's character and its seamless integration into life. The second collection, 'The Heart of Horology: A Closer Look,' zooms in on the exquisite details that define these timepieces. Macro photography reveals the intricate craftsmanship of dials, the precision of movements, the textures of straps, and the artistry of engravings. By viewing these collections together, you'll see how the broader aesthetic of a watch in context (styling) is deeply rooted in its micro-level details (intricacies), and how these details, in turn, inspire specific style choices. This is an 'ontography' of my horological journey, documenting how these remarkable objects are both appreciated for their intrinsic beauty and woven into the fabric of everyday life.
+        </p>
+      </section>
+
+      <section class="gallery-section" id="style-group">
+        <h2 class="text-2xl font-bold text-gray-900 mb-4">Horology in Harmony: Styling the Timepiece</h2>
+        <p class="text-gray-700 mb-6">
+          This collection demonstrates how the watch is not merely an accessory, but the focal point around which personal style is built. Each image explores the dynamic interplay between the timepiece and the ensemble, showcasing the watch's ability to define and complete a look for various occasions.
+        </p>
+        <div class="gallery-grid">
+          <div class="gallery-item">
+            <img src="imgs/varsity.jpg" alt="College Varsity Outfit with Watch Focus">
+            <div class="image-description">
+              <h4>College Varsity Vibe</h4>
+              <p>Pairing a classic timepiece with a casual, sporty outfit. The watch adds a touch of timelessness to the youthful energy of a varsity jacket and jeans, proving its versatility.</p>
+            </div>
+          </div>
+          <div class="gallery-item">
+            <img src="imgs/tshirt.jpg" alt="Street Urban Outfit Highlighting the Watch">
+            <div class="image-description">
+              <h4>Street Urban Edge</h4>
+              <p>The watch grounds an urban-inspired ensemble. Its sophisticated lines contrast with a graphic tee and dark trousers, making it a standout piece in a contemporary street-style context.</p>
+            </div>
+          </div>
+          <div class="gallery-item">
+            <img src="imgs/flannel.jpg" alt="Casual Look with Flannel Centered on the Watch">
+            <div class="image-description">
+              <h4>Layered Casual Comfort</h4>
+              <p>A comfortable flannel shirt provides a relaxed backdrop for the watch. This look shows how a quality timepiece can elevate even the most casual outfits, adding a point of interest and personal style to a layered look.</p>
+            </div>
+          </div>
+          <div class="gallery-item">
+            <img src="imgs/suit.jpg" alt="Evening Formal Wear with a Prominent Watch">
+            <div class="image-description">
+              <h4>Elegant Evening Wear</h4>
+              <p>Integrated with a formal suit, the watch becomes a key element of sophistication. It’s a statement of precision and taste for special occasions.</p>
+            </div>
+          </div>
+          <div class="gallery-item">
+            <img src="imgs/denim.jpg" alt="Knitwear Outfit Placeholder"> <div class="image-description">
+                <h4>Comfort in Knitwear</h4>
+                <p>Showcasing the watch alongside various knitwear textures and styles. This highlights how the timepiece adds a touch of refinement to comfortable, layered, or casual knit ensembles.</p>
+            </div>
+          </div>
+          <div class="gallery-item">
+            <img src="imgs/knit.jpg" alt="Denim Outfit Placeholder"> <div class="image-description">
+                <h4>Denim Ensemble</h4>
+                <p>Highlighting the timeless versatility of denim as a backdrop for the watch. This look showcases how the watch integrates seamlessly with casual, rugged, or even slightly elevated denim styles.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+       <section class="gallery-section" id="watch-details-group">
+        <h2 class="text-2xl font-bold text-gray-900 mb-4">The Heart of Horology: A Closer Look</h2>
+        <p class="text-gray-700 mb-6">
+          Explore the soul of the watch through macro photography. These images highlight the fine details and meticulous craftsmanship of essential watch components—from the tactile qualities of straps and the gleam of polished cases to the precision of the movement and the artistry of its functions.
+        </p>
+        <div class="gallery-grid">
+          <div class="gallery-item">
+              <img src="imgs/dial.jpg" alt="Dial Texture Close-up">
+               <div class="image-description">
+                  <h4>Dial Texture Close-up</h4>
+                  <p>A detailed shot revealing the intricate texture and finish of the watch dial, highlighting the subtle patterns and applied indices that speak to its quality.</p>
+              </div>
+          </div>
+          <div class="gallery-item">
+              <img src="imgs/crownbtn.jpg" alt="Crown Detail Close-up">
+               <div class="image-description">
+                  <h4>Crown Detail and Engraving</h4>
+                  <p>Focusing on the watch crown, showcasing its design, knurling for grip, and any subtle branding or decorative engravings—key touchpoints of interaction.</p>
+              </div>
+          </div>
+          <div class="gallery-item">
+              <img src="imgs/back.jpg" alt="Caseback Engraving">
+               <div class="image-description">
+                  <h4>Caseback Engraving/Exhibition</h4>
+                  <p>Detailing the watch's caseback, whether it's an intricate engraving telling a story or an exhibition window offering a glimpse into the mechanical heart.</p>
+              </div>
+          </div>
+           <div class="gallery-item">
+              <img src="imgs/deployment.jpg" alt="Clasp Mechanism">
+               <div class="image-description">
+                  <h4>Clasp Mechanism</h4>
+                  <p>A close look at the watch strap's clasp, highlighting its engineering, security features, and the satisfying click that signifies quality materials.</p>
+              </div>
+          </div>
+          <div class="gallery-item">
+              <img src="imgs/butterfly.jpg" alt="Butterfly Clasp Close-up">
+               <div class="image-description">
+                  <h4>Butterfly Clasp Description</h4>
+                  <p>A detailed view of the butterfly clasp, emphasizing its seamless integration when closed and the mechanism that provides a secure and comfortable fit.</p>
+              </div>
+          </div>
+          <div class="gallery-item">
+              <img src="imgs/leather.jpg" alt="Strap Material Texture">
+               <div class="image-description">
+                  <h4>Strap Material Texture</h4>
+                  <p>A macro shot focusing on the texture and quality of the watch strap material, be it the supple grain of leather or the cool finish of metal links.</p>
+              </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="data-section">
+        <h3 class="text-xl font-bold text-gray-900 mb-4">Data Overview: A Tale of Two Perspectives on Watches</h3>
+        <ul class="list-disc ml-6 text-gray-700 mb-4">
+          <li><strong>Horology in Harmony: Styling the Timepiece</strong>: 6 visual narratives demonstrating how specific watches are styled, shot from a consistent eye-level perspective with natural indoor light. The focus is on the watch's versatility and its role in defining looks across casual, street, and formal contexts.</li>
+          <li><strong>The Heart of Horology: A Closer Look</strong>: 6 high-resolution macro photographs that delve into the watch's construction. Emphasis is on material textures (e.g., leather, steel), functional mechanics (e.g., clasps, crowns), and design elements that underscore the detailed craftsmanship of each timepiece.</li>
+        </ul>
+      </section>
+    </main>
+
+    <footer class="site-footer bg-gray-800 text-gray-300 py-6">
+      <div class="container mx-auto text-center text-sm">
+        &copy; 2025 Time Refined. All rights reserved.
+      </div>
+    </footer>
+  </body>
+</html>
